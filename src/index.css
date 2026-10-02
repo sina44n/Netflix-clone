@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+
+/* scrolling oyivakkan vandiyan ith */
+@utility scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
