@@ -1,11 +1,26 @@
 import React,{useState} from 'react'
 import logo from '../assets/logo.png'
+import {login, signup} from '../firebase'
  
 
 
 
 function Login() {
 const [signState, setSignState] = useState('Sign In')
+const [name, setName] = useState("")
+const [email, setEmail] = useState("")
+const [password, setPassword] = useState("")
+
+const user_auth = async (event)=>{
+    event.preventDefault();
+    if(signState === "sign In"){
+      await login(email, password);
+    }else{
+      await signup(name, email, password);
+    }
+}
+
+
 
 
   return (
@@ -20,12 +35,23 @@ const [signState, setSignState] = useState('Sign In')
 
             <form>
                 {signState === 'Sign Up' ? 
-                <input type='text' placeholder='Your name' required className='w-full h-[50px] bg-[#333] text-white my-[12px] border-0 outline-0 rounded-[4px] py-[16px] px-[20px] text-[16px] font-medium'></input> 
+                <input value={name} onChange={(e)=>{setName(e.target.value)}} type='text' 
+                      placeholder='Your name' required className='w-full h-[50px] bg-[#333] 
+                      text-white my-[12px] border-0 outline-0 rounded-[4px] py-[16px] px-[20px] 
+                      text-[16px] font-medium'></input> 
                 : <></>}
                 
-                <input type='email' placeholder='Email' required className='w-full h-[50px] bg-[#333] text-white my-[12px] border-0 outline-0 rounded-[4px] py-[16px] px-[20px] text-[16px] font-medium'></input>
-                <input type='password' placeholder='Password' required className='w-full h-[50px] bg-[#333] text-white my-[12px] border-0 outline-0 rounded-[4px] py-[16px] px-[20px] text-[16px] font-medium'></input>
-                <button className='w-full border-0 outline-0 p-[16px] bg-[#e50914] text-white rounded-[4px] text-[14px] font-medium mt-[20px] cursor-pointer'>{signState}</button>
+                <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type='email' placeholder='Email'
+                       required className='w-full h-[50px] bg-[#333] text-white my-[12px] border-0 
+                       outline-0 rounded-[4px] py-[16px] px-[20px] text-[16px] font-medium'></input>
+
+                <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type='password' 
+                      placeholder='Password' required className='w-full h-[50px] bg-[#333] text-white 
+                      my-[12px] border-0 outline-0 rounded-[4px] py-[16px] px-[20px] text-[16px] 
+                      font-medium'></input>
+
+                <button onClick={user_auth} type='submit' className='w-full border-0 outline-0 p-[16px] bg-[#e50914] text-white 
+                        rounded-[4px] text-[14px] font-medium mt-[20px] cursor-pointer'>{signState}</button>
 
                 <div className="form-help flex items-center justify-between text-[#b3b3b3] text-[13px]">
                     <div className="remember flex items-center gap-[5px] mt-[10px]">
@@ -38,8 +64,11 @@ const [signState, setSignState] = useState('Sign In')
 
             <div className="form-switch mt-[40px] text-[#737373]">
                 {signState === 'Sign In' ?  
-                <p>New to Netflix?<span onClick={()=>setSignState('Sign Up')} className='ml-[6px] text-[#fff] cursor-pointer font-medium'>Sign Up Now</span></p>
-                :<p>Already have account?<span onClick={()=>setSignState('Sign In')} className='ml-[6px] text-[#fff] cursor-pointer font-medium'>Sign In Now</span></p>
+                <p>New to Netflix?<span onClick={()=>setSignState('Sign Up')} className='ml-[6px] 
+                   text-[#fff] cursor-pointer font-medium'>Sign Up Now</span></p>
+
+                :<p>Already have account?<span onClick={()=>setSignState('Sign In')} className='ml-[6px] 
+                    text-[#fff] cursor-pointer font-medium'>Sign In Now</span></p>
                 }
                
                 

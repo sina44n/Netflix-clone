@@ -5,6 +5,7 @@ import bell_icon from '../assets/bell_icon.svg'
 import profile_img from '../assets/profile_img.png'
 import caret_icon from '../assets/caret_icon.svg'
 import {useRef, useEffect} from 'react'
+import { logout } from '../firebase'
 
 
 
@@ -58,7 +59,7 @@ function Navbar() {
         <img src={caret_icon} alt='' className='icons'></img>
         <div className='dropdown absolute top-full right-0 w-max bg-[#191919] py-[18px] px-[22px] 
                         rounded-[2px] underline z-[1] hidden group-hover:block'>
-          <p className='text-[13px] cursor-pointer'>Sign Out of Netflix</p>
+          <p onClick={()=>{logout()}} className='text-[13px] cursor-pointer'>Sign Out of Netflix</p>
         </div>
       </div>
 
