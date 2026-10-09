@@ -17,13 +17,13 @@ function Footer() {
     <div className='footer py-[30px] px-[4%] max-w-[1000px] mx-auto'>
 
         <div className='footer-icons flex gap-[20px] my-[40px]'>
-            <img src={facebook_icon}  alt=''  className='cursor-pointer w-[30px]'/>
-            <img src={instagram_icon} alt=''  className='cursor-pointer w-[30px]'/>
-            <img src={twitter_icon}   alt=''  className='cursor-pointer w-[30px]'/>
-            <img src={youtube_icon}   alt=''  className='cursor-pointer w-[30px]'/>
+            <img src={facebook_icon}  alt=''  className='cursor-pointer w-[25px] md:w-[30px]'/>
+            <img src={instagram_icon} alt=''  className='cursor-pointer w-[25px] md:w-[30px]'/>
+            <img src={twitter_icon}   alt=''  className='cursor-pointer w-[25px] md:w-[30px]'/>
+            <img src={youtube_icon}   alt=''  className='cursor-pointer w-[25px] md:w-[30px]'/>
         </div>
 
-        <ul className='grid grid-cols-4 list-none gap-[15px]'>
+        <ul className='grid grid-cols-2 gap-[8px] md:grid-cols-4 md:gap-[15px] list-none text-[14px]'>
             <li>Audio Description</li>
             <li>Help Center</li>
             <li>Gift Cards</li>
@@ -46,3 +46,5 @@ function Footer() {
 }
 
 export default Footer
+
+
